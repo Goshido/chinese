@@ -3,8 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Goshido's Chinese teacher</title>
+
         <link rel="stylesheet" href="css/styles.css">
         <script src="js/jquery-3.6.3.min.js"></script>
+        <script src="js/word.js"></script>
+        <script src="js/dictionary.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/main.js"></script>
     </head>
 
     <body>
@@ -25,9 +30,9 @@
                 <input id="pinyin-value" class="value" placeholder="pīnyīn">
             </div>
             <div id="listen-column">
-                <img src="res/speaker.png" class="speaker">
+                <img id="speaker" src="res/speaker.png" class="speaker" title="F9">
             </div>
         </div>
-        <button id="action" class="button">Commit</button>
+        <button id="action" class="button" title="F4">Commit</button>
     </body>
 </html>
