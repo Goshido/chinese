@@ -1,0 +1,86 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(38, 38, 38);
+}
+
+#chinese-word {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+    font-size: xxx-large;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    padding-top: 6mm;
+    margin-bottom: 6mm;
+    width: 100%;
+    overflow: hidden;
+}
+
+#test-panel {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+    font-size: medium;
+    font-weight: normal;
+    padding: 8mm;
+    text-align: left;
+    padding-top: 6mm;
+    width: 100%;
+    overflow: hidden;
+}
+
+#meaning-column {
+    float: left;
+    width: 40%;
+}
+
+#pinyin-column {
+    float: left;
+    width: 40%;
+}
+
+#listen-column {
+    float: left;
+    width: 20%;
+}
+
+.header {
+    color: rgb(115, 185, 0);
+    font-size: large;
+}
+
+.value {
+    color: white;
+    width: 95%;
+    background-color: rgb(38, 38, 38);
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.speaker {
+    width: 15mm;
+    height: auto;
+    opacity: 0.25;
+    transition: 0.5s ease;
+}
+
+.speaker:hover {
+    opacity: 1.0;
+}
+
+.button {
+    position: absolute;
+    left: 40%;
+    width: 40mm;
+    height: 15mm;
+    color: white;
+    font-size: large;
+    background-color: rgb(38, 38, 38);
+    border: 1px solid white;
+    border-radius: 4px;
+    transition: 0.5s ease;
+}
+
+.button:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
