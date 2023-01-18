@@ -1,11 +1,16 @@
 class Dictionary {
+    #_database = MakeDatabase ();
+
     GetSize () {
-        // TODO
-        return 42;
+        return this.#_database.length;
     }
 
     GetWord ( idx ) {
-        // TODO
-        return new Word ( "你好", "Nǐ hǎo", "Hello" );
+        const entry = this.#_database[ idx ];
+        return new Word ( entry._characters, entry._pinyin, entry._meaning );
+    }
+
+    GetCue ( idx ) {
+        return new Audio ( this.#_database[ idx ]._cue );
     }
 }

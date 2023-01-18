@@ -6,8 +6,7 @@
 
     // entry point
     function main () {
-        $ ( "#action" ).click ( event => g_App.OnAction () );
-        $ ( "#speaker" ).click ( event => g_App.OnSpeaker () );
+        g_App.Init ();
 
         $ ( document ).keydown (
             function ( event ) {

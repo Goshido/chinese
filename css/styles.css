@@ -84,3 +84,20 @@ body {
     background-color: white;
     border: 1px solid black;
 }
+
+.answer {
+    opacity: 0.0;
+    width: 95%;
+    margin-top: 6mm;
+    color: white;
+    background-color: rgb(38, 38, 38);
+    transition: 0.125s ease;
+}
+
+#pinyin-answer {
+    font-size: x-large;
+}
+
+#meaning-answer {
+    font-size: small;
+}
