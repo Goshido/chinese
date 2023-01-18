@@ -66,7 +66,7 @@ body {
     opacity: 1.0;
 }
 
-.button {
+#action {
     position: absolute;
     left: 40%;
     width: 40mm;
@@ -79,7 +79,7 @@ body {
     transition: 0.5s ease;
 }
 
-.button:hover {
+#action:hover {
     color: black;
     background-color: white;
     border: 1px solid black;
@@ -100,4 +100,61 @@ body {
 
 #meaning-answer {
     font-size: small;
+}
+
+#pinyin-panel {
+    opacity: 0.25;
+    transition: 0.125s ease;
+}
+
+.plate-common {
+    float: right;
+    width: 15mm;
+}
+
+.plate-text {
+    height: 15mm;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    border: 1px solid white;
+}
+
+.plate-help {
+    color: white;
+    height: 5mm;
+    font-size: x-small;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.full-line {
+    width: 100%;
+    height: 16mm;
+}
+
+#pinyin-high-tone {
+    color: rgb(202, 102, 102);
+    background-color: rgb(36, 18, 18);
+}
+
+#pinyin-rising-tone {
+    color: rgb(97, 199, 121);
+    background-color: rgb(19, 39, 24);
+}
+
+#pinyin-low-tone {
+    color: rgb(109, 125, 219);
+    background-color: rgb(19, 22, 37);
+}
+
+#pinyin-falling-tone {
+    color: rgb(201, 111, 219);
+    background-color: rgb(33, 18, 36);
+}
+
+#pinyin-ü-vowel {
+    color: white;
 }
