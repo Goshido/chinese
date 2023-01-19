@@ -14,6 +14,7 @@ class App {
     #_dictionary = new Dictionary ();
     #_idx;
     #_state = STATE_PENDING;
+    #_pinyinPanel = new PinyinPanel ();
 
     Init () {
         this.#_chineseWord = $ ( "#chinese-word" );
@@ -25,6 +26,8 @@ class App {
 
         $ ( "#action" ).click ( () => this.OnAction () );
         $ ( "#speaker" ).click ( () => this.OnSpeaker () );
+
+        this.#_pinyinPanel.Init ();
 
         this.#ProduceWord ();
     }
