@@ -1,7 +1,12 @@
-const KEY_SHIFT = 16;
+const KEY_A = 65;
 const KEY_ALT = 18
 const KEY_CTRL = 17;
+const KEY_E = 69;
 const KEY_F8 = 119;
+const KEY_I = 73;
+const KEY_O = 79;
+const KEY_SHIFT = 16;
+const KEY_U = 85;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11,6 +16,7 @@ class PinyinPanel {
     #_lowTone;
     #_risingTone;
 
+    #_input;
     #_panel;
     #_uVowel;
 
@@ -32,16 +38,28 @@ class PinyinPanel {
         this.#_uVowel = new Plate ( "#pinyin-ü-vowel", "rgb(38, 38, 38)", "rgb(90, 90, 90)" );
 
         const input = $ ( "#pinyin-value" );
+        this.#_input = input;
         input.focus ( () => this.#Activate () );
         input.focusout ( () => this.#Deactivate () );
         input.keydown ( event => this.#OnKeyDown ( event ) );
         input.keyup ( event => this.#OnKeyUp ( event ) );
 
         const dh = this.#_keyDownHandlers;
+        dh[ KEY_A ] = () => { this.#InsertVowel ( 'a', 'ā', 'á', 'ǎ', 'à' ); };
         dh[ KEY_ALT ] = () => { this.#_alt = true; this.#ResolvePlate (); };
         dh[ KEY_CTRL ] = () => { this.#_ctrl = true; this.#ResolvePlate (); };
-        dh[ KEY_F8 ] = () => { this.#_f8 = true; this.#ResolvePlate (); };
+        dh[ KEY_E ] = () => { this.#InsertVowel ( 'e', 'ē', 'é', 'ě', 'è' ); };
+
+        dh[ KEY_F8 ] = () => {
+            this.#_f8 = true;
+            this.#ResolvePlate ();
+            this.#InsertVowel ( 'ü', 'ǖ', 'ǘ', 'ǚ', 'ǜ' );
+        };
+
+        dh[ KEY_I ] = () => { this.#InsertVowel ( 'i', 'ī', 'í', 'ǐ', 'ì' ); };
+        dh[ KEY_O ] = () => { this.#InsertVowel ( 'o', 'ō', 'ó', 'ǒ', 'ò' ); };
         dh[ KEY_SHIFT ] = () => { this.#_shift = true; this.#ResolvePlate (); };
+        dh[ KEY_U ] = () => { this.#InsertVowel ( 'u', 'ū', 'ú', 'ǔ', 'ù' ); };
 
         const uh = this.#_keyUpHandlers;
         uh[ KEY_ALT ] = () => { this.#_alt = false; this.#ResolvePlate (); };
@@ -63,10 +81,43 @@ class PinyinPanel {
         this.#_panel.css ( { opacity: 0.25 } );
     }
 
+    #InsertVowel ( neutral, high, rising, low, falling ) {
+        // Based on https://stackoverflow.com/a/29862280
+        const input = this.#_input;
+        const start = input.prop ( "selectionStart" );
+        const end = input.prop ( "selectionEnd" );
+        const text = input.val ();
+
+        const before = text.substring ( 0, start );
+        const after  = text.substring ( end, text.length );
+
+        var vowel;
+
+        if ( this.#_highTone._isActive ) {
+            vowel = high;
+        } else if ( this.#_risingTone._isActive ) {
+            vowel = rising;
+        }  else if ( this.#_lowTone._isActive ) {
+            vowel = low;
+        }  else if ( this.#_fallingTone._isActive ) {
+            vowel = falling;
+        } else {
+            vowel = neutral;
+        }
+
+        input.val ( `${before}${vowel}${after}` )
+
+        const c = start + 1;
+        input[ 0 ].selectionStart = c;
+        input[ 0 ].selectionEnd = c;
+        input.focus()
+    }
+
     #OnKeyDown ( event ) {
         const keyCode = event.keyCode;
+        const handler = this.#_keyDownHandlers[ keyCode ];
 
-        if ( !this.#IsSpecial ( keyCode ) ) {
+        if ( !handler ) {
             return;
         }
 
@@ -76,8 +127,9 @@ class PinyinPanel {
 
     #OnKeyUp ( event ) {
         const keyCode = event.keyCode;
+        const handler = this.#_keyUpHandlers[ keyCode ];
 
-        if ( !this.#IsSpecial ( keyCode ) ) {
+        if ( !handler ) {
             return;
         }
 
@@ -115,9 +167,5 @@ class PinyinPanel {
         ft.Deactivate ();
         modify ( rt, c );
         modify ( lt, s );
-    }
-
-    #IsSpecial ( keyCode ) {
-        return keyCode === KEY_ALT || keyCode === KEY_CTRL || keyCode === KEY_SHIFT || keyCode === KEY_F8;
     }
 }
