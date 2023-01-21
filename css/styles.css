@@ -3,12 +3,19 @@ body {
     background-color: rgb(38, 38, 38);
 }
 
+.white-text {
+    color: white;
+}
+
+.green-text {
+    color: rgb(115, 185, 0);
+}
+
 #chinese-word {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
     font-size: 77pt;
     font-weight: normal;
     text-align: center;
-    color: white;
     padding-top: 6mm;
     margin-bottom: 6mm;
     width: 100%;
@@ -47,7 +54,6 @@ body {
 }
 
 .value {
-    color: white;
     width: 95%;
     background-color: rgb(38, 38, 38);
     border: 1px solid rgb(99, 99, 99);
@@ -91,7 +97,6 @@ body {
     opacity: 0.0;
     width: 95%;
     margin-top: 6mm;
-    color: white;
     background-color: rgb(38, 38, 38);
     transition: 0.125s ease;
 }
@@ -161,4 +166,77 @@ body {
 #pinyin-ü-vowel {
     color: white;
     background-color: rgb(38, 38, 38)
+}
+
+.custom-checkbox {
+    float: left;
+    display: block;
+    position: relative;
+    padding-left: 1.225em;
+    color: rgb(115, 185, 0);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox-mark {
+    position: absolute;
+    top: 0.105em;
+    left: 0;
+    height: 0.875em;
+    width: 0.875em;
+    background-color: rgb(38, 38, 38);
+    border: 1px solid rgb(99, 99, 99);
+}
+
+.custom-checkbox input:checked ~ .custom-checkbox-mark {
+    color: white;
+}
+
+.custom-checkbox-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked ~ .custom-checkbox-mark:after {
+    display: block;
+}
+
+.custom-checkbox .custom-checkbox-mark:after {
+    left: 0.315em;
+    top: 0.175em;
+    width: 0.175em;
+    height: 0.35em;
+    border: solid white;
+    border-width: 0 0.105em 0.105em 0;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+#single-group-value {
+    float: inline-start;
+    font-size: small;
+    width: 20mm;
+    margin-left: 0.4em;
+    background-color: rgb(38, 38, 38);
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#group-description {
+    margin-top: 0.4em;
+    font-size: x-small;
 }

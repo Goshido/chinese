@@ -14,6 +14,8 @@ class App {
     #_dictionary = new Dictionary ();
     #_idx;
     #_state = STATE_PENDING;
+
+    #_groupPanel = new GroupPanel ();
     #_pinyinPanel = new PinyinPanel ();
 
     Init () {
@@ -27,6 +29,7 @@ class App {
         $ ( "#action" ).click ( () => this.OnAction () );
         $ ( "#speaker" ).click ( () => this.OnSpeaker () );
 
+        this.#_groupPanel.Init ( this.#_dictionary.GetSize () );
         this.#_pinyinPanel.Init ();
 
         this.#ProduceWord ();
@@ -63,7 +66,14 @@ class App {
 
     #Roll () {
         const size = this.#_dictionary.GetSize ();
-        const idx = Math.floor ( Math.random () * size );
+        const gp = this.#_groupPanel;
+        var idx;
+
+        if ( gp.UseSingleGroup () ) {
+            idx = GROUP_WORDS * ( gp.GetGroup () - 1 ) + Math.floor ( Math.random () * GROUP_WORDS );
+        } else {
+            idx = Math.floor ( Math.random () * size );
+        }
 
         if ( idx === this.#_idx ) {
             this.#_idx = ( idx + 1 ) % size;

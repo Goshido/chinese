@@ -11,30 +11,31 @@
         <script src="js/dictionary.js"></script>
         <script src="js/plate.js"></script>
         <script src="js/pinyin-panel.js"></script>
+        <script src="js/group-panel.js"></script>
         <script src="js/app.js"></script>
         <script src="js/main.js"></script>
     </head>
 
     <body>
-        <div id="chinese-word">
+        <div id="chinese-word" class="white-text">
             &nbsp;
         </div>
         <div id="test-panel">
             <div id="meaning-column">
-                <div class="header">
+                <div class="header green-text">
                     Meaning
                 </div>
-                <input id="meaning-value" class="value" placeholder="-type here-">
-                <div id="meaning-answer" class="answer">
+                <input id="meaning-value" class="value white-text" placeholder="-type here-">
+                <div id="meaning-answer" class="answer white-text">
                     &nbsp;
                 </div>
             </div>
             <div id="pinyin-column">
-                <div class="header">
+                <div class="header green-text">
                     Pinyin
                 </div>
-                <input id="pinyin-value" class="value" placeholder="-type here-">
-                <div id="pinyin-answer" class="answer">
+                <input id="pinyin-value" class="value white-text" placeholder="-type here-">
+                <div id="pinyin-answer" class="answer white-text">
                     &nbsp;
                 </div>
             </div>
@@ -81,5 +82,16 @@
         <div class="full-line">
             <button id="action" title="F4">Commit</button>
         </div>
+        <div>
+            <div>
+                <label class="custom-checkbox green-text">Use single group #
+                    <input type="checkbox" id="single-group">
+                    <span class="custom-checkbox-mark"></span>
+                </label>
+                <input type="number" id="single-group-value" class="white-text" min="1" step="1" pattern="\d+">
+                <span class="green-text">out of <span id="group-amount">42</span>.</span>
+            </div>
+        </div>
+        <div id="group-description" class="white-text">Group is a sequence of <span id="words-per-group">10</span> words.</div>
     </body>
 </html>
